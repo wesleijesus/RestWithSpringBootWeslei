@@ -13,6 +13,6 @@ deploy:
     docker push trocadeiro/mysql-restwithspringboot;
     docker push trocadeiro/rest-with-springboot-calculadora;
   on:
-    branch: master
+    branch: main
 notifications:
   email: false
