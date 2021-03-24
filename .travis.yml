@@ -1,0 +1,18 @@
+language: bash
+services: docker
+before_install:
+  - cd 01_restwithspringboot_docker
+  - echo "We are in the docker folder!"
+script:
+  - docker-compose build
+before_deploy:
+  - echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+deploy:
+  provider:script
+  script:
+    docker push trocadeiro/mysql-restwithspringboot;
+    docker push trocadeiro/rest-with-springboot-calculadora;
+  on:
+    branch: master
+notifications:
+  email: false
